@@ -13,10 +13,13 @@ class FizzBuzz {
         this.n = n;
     }
 
+    public FizzBuzz() {
+    }
+
     // printFizz.run() outputs "fizz".
     public synchronized void fizz(Runnable printFizz) throws InterruptedException {
         while (currN <= n) {
-            while (!(currN % 3 == 0 && currN % 5 != 0) && currN <= n)  {
+            while (!(currN % 3 == 0 && currN % 5 != 0) && currN <= n) {
                 wait();
             }
             if (currN <= n) {
@@ -30,7 +33,7 @@ class FizzBuzz {
     // printBuzz.run() outputs "buzz".
     public synchronized void buzz(Runnable printBuzz) throws InterruptedException {
         while (currN <= n) {
-            while (!(currN % 3 != 0 && currN % 5 == 0) && currN <= n)  {
+            while (!(currN % 3 != 0 && currN % 5 == 0) && currN <= n) {
                 wait();
             }
             if (currN <= n) {
@@ -44,7 +47,7 @@ class FizzBuzz {
     // printFizzBuzz.run() outputs "fizzbuzz".
     public synchronized void fizzbuzz(Runnable printFizzBuzz) throws InterruptedException {
         while (currN <= n) {
-            while (!(currN % 3 == 0 && currN % 5 == 0) && currN <= n)  {
+            while (!(currN % 3 == 0 && currN % 5 == 0) && currN <= n) {
                 wait();
             }
             if (currN <= n) {
@@ -58,7 +61,7 @@ class FizzBuzz {
     // printNumber.accept(x) outputs "x", where x is an integer.
     public synchronized void number(IntConsumer printNumber) throws InterruptedException {
         while (currN <= n) {
-            while (!(currN % 3 != 0 && currN % 5 != 0) && currN <= n)  {
+            while (!(currN % 3 != 0 && currN % 5 != 0) && currN <= n) {
                 wait();
             }
             if (currN <= n) {
@@ -67,5 +70,13 @@ class FizzBuzz {
                 notifyAll();
             }
         }
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public void setN(int n) {
+        this.n = n;
     }
 }
